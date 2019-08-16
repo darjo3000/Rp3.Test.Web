@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Balance</h1>
+    <p class="lead">Bitácora de mis Ingresos y Gastos</p>    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Resumen</h2>
+        <p>
+            Ver el Resumen de mi Balance
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Balance","Transaction")">Ir a Balance</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Registrar</h2>
+        <p>
+            Revise su Balance e ingrese nuevas Transacciones
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index","Transaction")">Ir a Registrar</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Categorías</h2>
+        <p>Agregue o revise los Rubros Disponibles</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index","Category")">Ir a Categorías</a></p>
+    </div>   
+</div>

@@ -1,0 +1,56 @@
+﻿@model List<Rp3.Test.Mvc.Models.TransactionViewModel>
+@{
+    ViewBag.Title = "Balance";
+    decimal amountType1 = 0;
+    decimal amountType2 = 0;
+}
+
+<div class="jumbotron">
+    <h1>Balance</h1>
+    <p class="lead">Resumen por Categoría</p>
+</div>
+
+<div class="row">
+    <table style="width:60%">
+        <thead>
+            <tr>
+                <th>Categoría</th>
+                <th>Saldo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.CategoryName
+                    </td>
+
+                    @if (@item.TransactionTypeId == 1)
+                    {
+                        amountType1 = amountType1 + item.Amount;
+                        <td>
+                            @string.Format("{0:c2}", item.Amount)
+                        </td>
+                    }
+
+                    @if (@item.TransactionTypeId == 2)
+                    {
+                        amountType2 = amountType2 + item.Amount;
+                        <td>
+                            (@string.Format("{0:c2}", item.Amount))
+                        </td>
+                    }
+                </tr>
+            }
+            <tr>
+                <td>
+                    <strong>Total</strong>
+                </td>
+                <td>
+                    <strong>@string.Format("{0:c2}", amountType1 - amountType2)</strong>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,56 @@
+﻿@model List<Rp3.Test.Mvc.Models.TransactionViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Mis Transacciones</h1>
+    <p class="lead">Registro de Ingresos y Gastos</p>    
+    <a class="btn btn-default" href="@Url.Action("Create","Transaction")">Nuevo</a>
+</div>
+
+<div class="row">    
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Categoría</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Valor</th>
+                <th>Notas</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td><a class="btn btn-primary" href="@Url.Action("Edit", new { transactionId = item.TransactionId })">Editar</a></td>                
+                <td>
+                    @item.TransactionId
+                </td>
+                <td>
+                    @string.Format("{0:dd/MMM/yyyy}", item.RegisterDate)
+                </td>
+                <td>
+                    @item.CategoryName
+                </td>
+                <td>
+                    @item.TransactionType
+                </td>
+                <td>
+                    @item.ShortDescription
+                </td>
+                <td>
+                    @string.Format("{0:c2}", item.Amount)
+                </td>
+                <td>
+                    @item.Notes
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

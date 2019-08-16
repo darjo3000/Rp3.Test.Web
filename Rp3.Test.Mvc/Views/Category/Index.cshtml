@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Rp3.Test.Mvc.Models.CategoryViewModel>
+@{
+    ViewBag.Title = "Categorías";
+}
+
+<div class="jumbotron">
+    <h1>Categorías</h1>
+    <a class="btn btn-primary" href="@Url.Action("Create")">Nuevo</a>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <table style="width:50%">
+            <thead>
+                <tr>
+                    <th width="100px"></th>
+                    <th width="100px">Código</th>
+                    <th>Categoría</th>
+                    <th width="50px">Activo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <td><a class="btn btn-default" href="@Url.Action("Edit", new { categoryId = category.CategoryId })">Editar</a></td>
+                        <td>@category.CategoryId</td>
+                        <td>@category.Name</td>
+                        <td class="text-center">@Html.CheckBox("category-active-check", category.Active, htmlAttributes: new { disabled = "disabled" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
