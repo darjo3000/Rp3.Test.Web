@@ -22,7 +22,7 @@ namespace Rp3.Test.Proxies
         private const string UriGetTransactionType = "api/transactionTypeData/get";
 
         private const string UriGetTransactions = "api/transactionData/get?accountId={0}";
-        private const string UriGetTransactionsBalance = "api/transactionData/getBalance?accountId={0}";
+        private const string UriGetTransactionsBalance = "api/transactionData/getBalance?accountId={0}&dateFrom={1}&dateTo={2}";
         private const string UriGetTransactionById = "api/transactionData/getById?transactionId={0}";
         private const string UriInsertTransactions = "api/transactionData/insert";
         private const string UriUpdateTransactions = "api/transactionData/update";
@@ -92,9 +92,9 @@ namespace Rp3.Test.Proxies
         /// Obtiene el Listado del Balance de las Transacciones
         /// </summary>
         /// <returns></returns>
-        public List<TransactionView> GetTransactionsBalance(int accountId)
+        public List<TransactionView> GetTransactionsBalance(int accountId, string dateFrom, string dateTo)
         {
-            return HttpGet<List<TransactionView>>(UriGetTransactionsBalance, accountId);
+            return HttpGet<List<TransactionView>>(UriGetTransactionsBalance, accountId, dateFrom, dateTo);
         }
 
         /// <summary>

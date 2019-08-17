@@ -178,7 +178,7 @@ namespace Rp3.Test.Mvc.Controllers
             Proxies.Proxy proxy = new Proxies.Proxy();
 
             int accountId = Convert.ToInt32(System.Web.HttpContext.Current.Session["AccountId"]);
-            var data = proxy.GetTransactionsBalance(accountId);
+            var data = proxy.GetTransactionsBalance(accountId, DateTime.Now.AddDays(-30).ToString(), DateTime.Now.ToString());
 
             List<Rp3.Test.Mvc.Models.TransactionViewModel> model = new List<Models.TransactionViewModel>();
 

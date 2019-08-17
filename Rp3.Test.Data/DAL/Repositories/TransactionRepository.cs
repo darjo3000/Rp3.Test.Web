@@ -18,9 +18,9 @@ namespace Rp3.Test.Data.Repositories
         Ejemplo consultar datos a partir de un procedimiento almacenado
         */
 
-        public List<TransactionBalance> GetBalance(int accountId, DateTime dateStart, DateTime dateEnd)
+        public List<TransactionBalance> GetBalance(int accountId, DateTime dateFrom, DateTime dateTo)
         {
-            return this.DataBase.SqlQuery<TransactionBalance>("EXEC dbo.spGetBalance @AccountId = {0}", accountId).ToList();
+            return this.DataBase.SqlQuery<TransactionBalance>("EXEC dbo.spGetBalance @AccountId = {0}, @DateFrom = {1}, @DateTo = {2}", accountId, dateFrom, dateTo).ToList();
         }
     }
 }

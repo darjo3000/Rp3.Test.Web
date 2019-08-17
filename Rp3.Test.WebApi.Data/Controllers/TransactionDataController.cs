@@ -75,13 +75,15 @@ namespace Rp3.Test.WebApi.Data.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetBalance(int accountId)
+        public IHttpActionResult GetBalance(int accountId, string dateFrom, string dateTo)
         {
             List<Rp3.Test.Common.Models.TransactionView> commonModel = new List<Common.Models.TransactionView>();
 
             using (DataService service = new DataService())
             {
-                IEnumerable<Rp3.Test.Data.Models.TransactionBalance> dataModel = service.Transactions.GetBalance(accountId, DateTime.Now, DateTime.Now);
+                DateTime _dateFrom = Convert.ToDateTime(dateFrom);
+                DateTime _dateTo = Convert.ToDateTime(dateTo);
+                IEnumerable<Rp3.Test.Data.Models.TransactionBalance> dataModel = service.Transactions.GetBalance(accountId, _dateFrom, _dateTo);
 
                 commonModel = dataModel.Select(p => new Common.Models.TransactionView()
                 {
